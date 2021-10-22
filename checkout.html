@@ -1,0 +1,64 @@
+<html>
+<head>
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "index.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<header>
+<center>
+<h1 id="welcome">Three Hugs Momo Restaurant</h1>
+<h2> Tettisputali, Kathmandu </h2>
+</center>
+
+<div class="topnav">
+    <a class="active" href="index.html">Home</a>
+    <a href="select_customers.php">View Our Customers</a>
+        <a href="select_chefs.php">View Our Chefs</a>
+        <a href="select_foodinfo.php">View Our Menu</a>
+        <a href="add_to_cart.php">Make An Order</a>
+        <a href="select_cart.php">View Cart</a>
+        <a href="add_customer.html" id="new_customer">New Customer? Sign Up!</a>
+        <a href="find_customer.html"id="find_customer">Search Customer</a>
+  </div>
+</header>
+
+
+
+
+<center>
+<h1> New customer? Sign up first. </h1>
+<form action = "add_customer.html" method="post">
+    <button type="submit" class="btn btn-primary" value="Go To Sign Up Page">Sign Up</button>
+</form>
+
+<h1> If existing member, please enter your details below. </h1>
+
+<form action = "checkout.php" method="post">
+    <label for="customer_email">Customer Email:</label><br>
+    <input type="email" id="customer_email" name="customer_email" placeholder="xyz@example.com" required><br>
+    <label for="customer_phonenum">Customer Phone Number:</label><br>
+    <input type="text" id="customer_phonenum" name="customer_phonenum" minlength="10" required><br>
+    <label for="customer_creditcard">Customer Credit/Debit Card Number:</label><br>
+    <input type="text" id="customer_creditcard" name="customer_creditcard" minlength="16" maxlength="16" required><br>
+    <label for="customer_securitycode">Credit/Debit Card Security Code:</label><br>
+    <input type="text" id="customer_securitycode" name="customer_securitycode" minlength="3" maxlength="4" required><br>
+    <input type="submit" value="Checkout">
+  </form>
+
+</center>
+  <footer>
+    <div class="footer">
+    <a href="about_us.html">About Us</a><br>
+    <a href="our_news.html">Three Hugs In The News</a><br>
+    <a href="suggestions.html">Suggestions</a><br>
+    <a href="privacy_policy.html">Three Hugs Privacy Policy</a><br>
+    <p> All Rights Reserved. Three Hugs Momo Restaurant. </p>
+    </div>
+    </footer>
+    </body>
+    </html>
+
+

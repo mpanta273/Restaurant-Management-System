@@ -1,0 +1,107 @@
+CREATE TABLE Restaurant (
+RestaurantID INT NOT NULL AUTO_INCREMENT,
+Name VARCHAR(20) NOT NULL,
+Address VARCHAR(10) NOT NULL,
+PRIMARY KEY (RestaurantID)
+);
+
+CREATE TABLE Customer (
+CustomerID INT NOT NULL AUTO_INCREMENT,
+Fname VARCHAR(20),
+Lname VARCHAR(20),
+PRIMARY KEY (CustomerID)
+);
+
+CREATE TABLE FoodInfo (
+ItemName VARCHAR(30) NOT NULL,
+Description VARCHAR(100),
+Price INT NOT NULL,
+PRIMARY KEY (ItemName)
+);
+
+CREATE TABLE TotalAmount (
+OrderNo INT NOT NULL AUTO_INCREMENT,
+OrderTotal SMALLINT NOT NULL,
+PRIMARY KEY (OrderNo)
+);
+
+CREATE TABLE Orders (
+OrderNo INT NOT NULL AUTO_INCREMENT,
+OrderDate DATETIME NOT NULL,
+CustomerID INT,
+PRIMARY KEY (OrderNo),
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+
+CREATE TABLE FoodItem (
+ItemName VARCHAR(30),
+OrderNo INT,
+Price SMALLINT,
+PRIMARY KEY (ItemName, OrderNo),
+FOREIGN KEY(OrderNo) REFERENCES Orders (OrderNo),
+FOREIGN KEY(ItemName) REFERENCES FoodInfo (ItemName)
+);
+
+CREATE TABLE Bill (
+BillNo INT NOT NULL AUTO_INCREMENT,
+RestaurantID INT,
+CustomerID INT,
+OrderNo INT,
+PRIMARY KEY (BillNo),
+FOREIGN KEY (OrderNo) REFERENCES Orders(OrderNo),
+FOREIGN KEY (RestaurantID) REFERENCES Restaurant(RestaurantID),
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+CREATE TABLE Contain(
+ID INT NOT NULL AUTO_INCREMENT,
+OrderNo INT,
+ItemName VARCHAR(30),
+Quantity INT,
+PRIMARY KEY(ID, OrderNo),
+FOREIGN KEY(OrderNo) REFERENCES Orders (OrderNo),
+FOREIGN KEY(ItemName) REFERENCES FoodInfo (ItemName)
+);
+
+CREATE TABLE Chef (
+ChefID INT NOT NULL AUTO_INCREMENT,
+RestaurantID INT,
+WorkStartDate DATETIME NOT NULL,
+Firstname VARCHAR(20) NOT NULL,
+LastName VARCHAR(20) NOT NULL,
+PRIMARY KEY (ChefID),
+FOREIGN KEY (RestaurantID) REFERENCES Restaurant(RestaurantID)
+);
+
+CREATE TABLE Prepares(
+ChefID INT,
+OrderNo INT,
+PRIMARY KEY (ChefID, OrderNo),
+FOREIGN KEY(OrderNo) REFERENCES Orders (OrderNo),
+FOREIGN KEY(ChefID) REFERENCES Chef (ChefID)
+);
+
+CREATE TABLE Customer_PhoneNum(
+CustomerID INT,
+PhoneNum VARCHAR(10),
+PRIMARY KEY (CustomerID, PhoneNum),
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+CREATE TABLE CustomerEmail(
+CustomerID INT,
+Email VARCHAR(255),
+PRIMARY KEY(CustomerID, Email),
+FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID)
+);
+
+CREATE TABLE Cart(
+CartID INT NOT NULL AUTO_INCREMENT,
+ItemName VARCHAR(30),
+Quantity INT NOT NULL,
+Price INT NOT NULL,
+PRIMARY KEY (CartID, ItemName),
+FOREIGN KEY (ItemName) REFERENCES FoodInfo (ItemName)
+);
+
